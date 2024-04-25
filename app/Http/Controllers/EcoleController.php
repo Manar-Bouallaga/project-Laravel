@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ecole;
 use Illuminate\Http\Request;
 
 class EcoleController extends Controller
@@ -12,6 +13,7 @@ class EcoleController extends Controller
     public function index()
     {
         //
+        return view("ecole.index");
     }
 
     /**
@@ -20,6 +22,7 @@ class EcoleController extends Controller
     public function create()
     {
         //
+        return view('ecole.create');
     }
 
     /**
@@ -28,6 +31,11 @@ class EcoleController extends Controller
     public function store(Request $request)
     {
         //
+        $store = new Ecole();
+        $store->nom_ecole = $request->nom_ecole;
+        $store->categorie = $request->categorie;
+        $store->save();
+        return redirect()->route('ecoles.index');
     }
 
     /**
