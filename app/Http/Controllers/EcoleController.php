@@ -12,8 +12,9 @@ class EcoleController extends Controller
      */
     public function index()
     {
-        //
-        return view("ecole.index");
+       $ecoles = Ecole::all();
+
+        return view("ecole.index",compact("ecoles"));
     }
 
     /**
@@ -51,7 +52,8 @@ class EcoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ecoles=Ecole::find($id);
+        return view ('ecole.edite',compact('ecoles'));
     }
 
     /**
@@ -59,7 +61,11 @@ class EcoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ecoles=Ecole::find($id);
+        $ecoles->nom_ecole = $request->input('nom_ecole');
+        $ecoles->categorie= $request->input('categorie');
+        $ecoles->save();
+        return redirect()->route('ecoles.index');
     }
 
     /**
@@ -67,6 +73,9 @@ class EcoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ecoles=Ecole::find($id);
+        $ecoles->delete();
+        return redirect()->route('ecoles.index');
+
     }
 }
