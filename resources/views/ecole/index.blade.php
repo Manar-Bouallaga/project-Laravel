@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>index</h1>
-<a href="{{route('ecoles.create')}}"> ajoute un ecole </a>
+<a href="{{route('ecoles.create')}}"> ajoute une école </a>
 
 </body>
 </html>
