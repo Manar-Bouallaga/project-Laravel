@@ -21,6 +21,7 @@
      
 </head>
 <body>
+<<<<<<< HEAD
 <h1 class= "text-center text-primary">Liste des écoles</h1>
 <tr>
             <th><button><a href="{{route("ecoles.create")}}">Ajouter une école</a></button></th>
@@ -59,6 +60,10 @@
         @endforeach 
     </table>
 
+=======
+<h1>index</h1>
+<a href="{{route('ecoles.create')}}"> ajoute un ecole </a>
+>>>>>>> f576a34c0e7f3a33dab4ba433102428bc3f33a9f
 
 </body>
 </html>

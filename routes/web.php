@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('Home');
-// });
+Route::get('/', function () {
+    return view('Home');
+});
 
 Route::resource('administrateurs', AdministrateurController::class);
 Route::resource('directeurs', DirecteurController::class);
