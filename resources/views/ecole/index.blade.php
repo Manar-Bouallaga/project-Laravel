@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{url('bootstrap.min.css')}}">
+    <style>
+       /* #ajouter, #search{
+            text-decoration: none;
+             text-color:#ffffff; 
+            background-color: #007bff;
+            color: #ffffff; 
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;   */
+        }
+    </style>
+     
 </head>
 <body>
 <h1 class= "text-center text-primary">Liste des écoles</h1>
-
+<tr>
+            <th><button><a href="{{route("ecoles.create")}}">Ajouter une école</a></button></th>
+            <th><input placeholder="Rechercher"></th>
+            
+        </tr>
 
 <table class="table table-striped my-5">
 <tr>
