@@ -11,7 +11,6 @@ class Administrateur extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'username',
         'password',
         'email',
     ];

@@ -8,9 +8,9 @@
     <style>
        /* #ajouter, #search{
             text-decoration: none;
-             text-color:#ffffff; 
+             text-color:#ffffff;
             background-color: #007bff;
-            color: #ffffff; 
+            color: #ffffff;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -18,15 +18,14 @@
             transition: background-color 0.3s ease;   */
         }
     </style>
-     
+
 </head>
 <body>
-<<<<<<< HEAD
 <h1 class= "text-center text-primary">Liste des écoles</h1>
 <tr>
             <th><button><a href="{{route("ecoles.create")}}">Ajouter une école</a></button></th>
             <th><input placeholder="Rechercher"></th>
-            
+
         </tr>
 
 <table class="table table-striped my-5">
@@ -35,7 +34,7 @@
             <th>Catégorie</th>
             <th>Supprimer</th>
             <th>Modifier</th>
-        
+
         </tr>
         @foreach ($ecoles as $ecole)
         <tr>
@@ -44,7 +43,7 @@
                         $ecole->nom_ecole
                     }}
             </td>
-            <td> 
+            <td>
             {{
                         $ecole->categorie
                     }}
@@ -55,15 +54,15 @@
         <input type="submit" value="Supprimmer" class="btn btn-danger">
         </form></td>
             <td> <a class="btn btn-primary" href="{{route("ecoles.edit" , $ecole->id)}}" >Modifier</a></td>
-           
+
         </tr>
-        @endforeach 
+        @endforeach
     </table>
 
-=======
+
 <h1>index</h1>
 <a href="{{route('ecoles.create')}}"> ajoute un ecole </a>
->>>>>>> f576a34c0e7f3a33dab4ba433102428bc3f33a9f
+
 
 </body>
 </html>

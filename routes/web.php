@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Home');
-});
+// Route::get('/', function () {
+//     return view('Home');
+// });
 
 Route::resource('administrateurs', AdministrateurController::class);
 Route::resource('directeurs', DirecteurController::class);
 Route::resource('ecoles', EcoleController::class);
 Route::resource('presences', PresenceController::class);
-
-
+Route::get('/login',[AdministrateurController::class,'login'])->name('login');
+Route::post('/login',[AdministrateurController::class,'loginPost'])->name('login');
 
