@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('date_reunion'); // Date-réunion
             $table->time('heure_rendez_vous'); // Heure-rendez-vous
             $table->string('lieu_rencontre'); // Lieu de rencontre
-            $table->string('code_qr_reunion')->nullable(); // Code QR de réunion (nullable)
+            $table->text('code_qr_reunion')->nullable(); // Code QR de réunion (nullable)
             $table->timestamps();
         });
     }
