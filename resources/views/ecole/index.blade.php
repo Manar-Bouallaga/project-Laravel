@@ -21,9 +21,12 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 <h1 class= "text-center text-primary">Liste des écoles</h1>
 
 
+=======
+>>>>>>> 680da5cb24e36b8caa0a3c193a198e1c7358e540
 <h1 class= "text-center text-primary">Liste des écoles</h1>
 <tr>
             <th><button><a href="{{route("ecoles.create")}}">Ajouter une école</a></button></th>
@@ -46,11 +49,15 @@
                         $ecole->nom_ecole
                     }}
             </td>
+<<<<<<< HEAD
 
             <td>
 
             <td>
 
+=======
+            <td>
+>>>>>>> 680da5cb24e36b8caa0a3c193a198e1c7358e540
             {{
                         $ecole->categorie
                     }}
@@ -66,6 +73,10 @@
         @endforeach
     </table>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 680da5cb24e36b8caa0a3c193a198e1c7358e540
 <h1>index</h1>
 <a href="{{route('ecoles.create')}}"> ajoute un ecole </a>
 

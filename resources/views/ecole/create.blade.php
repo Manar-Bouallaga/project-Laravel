@@ -16,8 +16,8 @@
         <br>
         <label >type d'école  </label>
         <select class="form-control"  name="categorie" id="">
-            <option value="prive">prive</option>
-            <option value="public">public</option>
+            <option value="privée">privée</option>
+            <option value="publique">publique</option>
         </select>
 
         <br>
