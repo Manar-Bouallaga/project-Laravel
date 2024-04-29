@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reunion;
 use Illuminate\Http\Request;
 
 class ReunionController extends Controller
@@ -12,7 +13,9 @@ class ReunionController extends Controller
     public function index()
     {
         //
-    }
+        $reunions = Reunion::all();
+        return view("reunion.index", compact("reunions"));
+     }
 
     /**
      * Show the form for creating a new resource.

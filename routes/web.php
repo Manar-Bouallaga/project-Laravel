@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdministrateurController;
 use App\Http\Controllers\DirecteurController;
 use App\Http\Controllers\EcoleController;
 use App\Http\Controllers\PresenceController;
-use App\Models\Administrateur;
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ReunionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,14 +18,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('Home');
-// });
-
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::middleware('auth')->group(function(){
 Route::resource('administrateurs', AdministrateurController::class);
 Route::resource('directeurs', DirecteurController::class);
 Route::resource('ecoles', EcoleController::class);
 Route::resource('presences', PresenceController::class);
+Route::resource('reunions', ReunionController::class);
+route::get("confirm_presence/{qrCode}");
+});
 Route::get('/login',[AdministrateurController::class,'login'])->name('login');
-Route::post('/login',[AdministrateurController::class,'loginPost'])->name('login');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/administrateurs', function () {
+//     return view('administrateurs.index');
+// })->middleware(['auth', 'verified'])->name('administrateurs');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+
+
 
