@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Directeur;
+use App\Models\Ecole;
 use Illuminate\Http\Request;
 
 class DirecteurController extends Controller
@@ -12,6 +14,9 @@ class DirecteurController extends Controller
     public function index()
     {
         //
+        $ecoles = Ecole::all();
+        return view("directeur.create", compact('ecoles'));
+
     }
 
     /**
@@ -20,6 +25,8 @@ class DirecteurController extends Controller
     public function create()
     {
         //
+        $ecoles = Ecole::all();
+        return view("directeur.create", compact('ecoles'));
     }
 
     /**
@@ -28,6 +35,14 @@ class DirecteurController extends Controller
     public function store(Request $request)
     {
         //
+        $store = new Directeur();
+        $store->id = $request->id;
+        $store->nom = $request->nom;
+        $store->prenom = $request->prenom;
+        $store->telephone = $request->telephone;
+        $store->ecole_id = $request->ecole_id;
+        $store->save();
+        return redirect()->route("directeurs.create");
     }
 
     /**
@@ -36,6 +51,7 @@ class DirecteurController extends Controller
     public function show(string $id)
     {
         //
+        // return view("directeurs.create");
     }
 
     /**

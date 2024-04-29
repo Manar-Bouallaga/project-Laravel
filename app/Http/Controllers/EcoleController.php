@@ -10,12 +10,22 @@ class EcoleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-       $ecoles = Ecole::all();
-
-        return view("ecole.index",compact("ecoles"));
+    public function index(){
+        $ecoles = Ecole::all();
+        return view("ecole.index", compact("ecoles"));
     }
+
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search'); // Get the search query from the request
+
+        // Query to filter schools based on the search query
+        $ecoles = Ecole::where('nom_ecole', 'like', '%'.$search.'%')->get();
+
+        return view("ecole.index", compact("ecoles"));
+    }
+
 
     /**
      * Show the form for creating a new resource.
