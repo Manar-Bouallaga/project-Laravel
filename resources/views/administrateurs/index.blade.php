@@ -42,13 +42,13 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="{{route("ecoles.index")}}">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">liste d'écoles</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="{{route("reunions.index")}}">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Réunion</span>
 				</a>
@@ -127,30 +127,16 @@
                     <div class="head">
   {{-- ---------------------------------------------------- -------------------------------------- --}}
                         <ul class="box-infos">
+                            @foreach($reunions as $reunion)
                             <li>
-                                <img src="qr-code.png" alt="">
+                                <img src="data:image/svg+xml;base64,{{ base64_encode($reunion->code_qr_reunion) }}" alt="Code QR de la réunion">
                                 <span class="text">
-                                    <h3>date_reunion </h3>
-                                    <p>heure_rendez_vous</p>
-                                    <p>lieu_rencontre</p>
+                                    <h3>{{$reunion->date_reunion}}</h3>
+                                    <p>{{$reunion->heure_rendez_vous}}</p>
+                                    <p>{{$reunion->lieu_rencontre}}</p>
                                 </span>
                             </li>
-                            <li>
-                                <img src="qr-code.png" alt="">
-                                <span class="text">
-                                    <h3>date_reunion </h3>
-                                    <p>heure_rendez_vous</p>
-                                    <p>lieu_rencontre</p>
-                                </span>
-                            </li>
-                            <li>
-                                <img src="qr-code.png" alt="">
-                                <span class="text">
-                                    <h3>date_reunion </h3>
-                                    <p>heure_rendez_vous</p>
-                                    <p>lieu_rencontre</p>
-                                </span>
-                            </li>
+                            @endforeach
                         </ul>
    {{-- ---------------------------------------------------- -------------------------------------- --}}
 
