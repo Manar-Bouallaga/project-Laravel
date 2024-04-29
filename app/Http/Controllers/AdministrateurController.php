@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Administrateur;
 use App\Models\Ecole;
+use App\Models\Reunion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,6 @@ class AdministrateurController extends Controller
 {
 
     public function login(){
-        return view("administrateurs.auth.login");
     }
 
     // public function loginPost(Request $request){
@@ -30,7 +30,8 @@ class AdministrateurController extends Controller
     public function index()
     {
         $ecoles = Ecole::all()->take(3);
-        return view('administrateurs.index',compact('ecoles'));
+        $reunions=Reunion::all()->take(3);
+        return view('administrateurs.index',compact('ecoles','reunions'));
     }
 
     /**
