@@ -15,7 +15,9 @@ class ReunionController extends Controller
         //
         $reunions = Reunion::all();
         return view("reunion.index", compact("reunions"));
+
     }
+
 
     /**
      * Show the form for creating a new resource.

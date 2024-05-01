@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Boxicons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -15,7 +16,9 @@
         margin-left: 12px;
          padding: 6px;
       }
-
+      .card-body {
+    color: black;
+}
     </style>
 </head>
 <body>
@@ -23,32 +26,36 @@
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
+		<a  class="brand">
 			{{-- <i class='bx bxs-smile'></i> --}}
             <img width="48px"  src="presentation (1).png" alt="">
 			<span class="text">CPSI</span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="#" style="text-decoration: none">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="#" style="text-decoration: none">
 					<i class='bx bxs-shopping-bag-alt' ></i>
 					<span class="text">Accueil</span>
 				</a>
 			</li>
 			<li>
 				<a href="{{route("ecoles.index")}}">
+				<a href="#" style="text-decoration: none">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">liste d'écoles</span>
 				</a>
 			</li>
 			<li>
+
 				<a href="{{route("reunions.index")}}">
+
+				<a href="#" style="text-decoration: none">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Réunion</span>
 				</a>
@@ -56,13 +63,13 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="#">
+				<a href="{{ route('profile.edit') }}" style="text-decoration: none">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">paramètre</span>
 				</a>
 			</li>
 			<li>
-				<a href="#" class="logout">
+				<a href="#" class="logout" style="text-decoration: none">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -101,21 +108,22 @@
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
 						<h3>1020</h3>
-						<p>jfk kguu</p>
+						<p>N° de réunion</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
 						<h3>2834</h3>
-						<p>fjfjgyhj</p>
+						<p>N° d'école</p>
 					</span>
 				</li>
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
+					{{-- <i class='bx bx-list-check'></i> --}}
+                    <i class='bx bxs-bar-chart-alt-2'></i>
 					<span class="text">
-						<h3>$2543</h3>
-						<p>jfjjg kj</p>
+						<h3>60.44%</h3>
+						<p>T° participation</p>
 					</span>
 				</li>
 			</ul>
@@ -123,9 +131,13 @@
 
 			<div class="table-data">
 				 <div class="order">
+                    <div style="display: flex">
 					<h3>Réunion</h3>
+                    <a href="#" style=" text-decoration: none"><i style="font-size: 13px">voir plus </i><img width="20px" src="right-arrow.png" alt=""></a>
+                    </div>
                     <div class="head">
   {{-- ---------------------------------------------------- -------------------------------------- --}}
+
                         <ul class="box-infos">
                             @foreach($reunions as $reunion)
                             <li>
@@ -138,10 +150,12 @@
                             </li>
                             @endforeach
                         </ul>
+
+                     </div>
+			   </div>
    {{-- ---------------------------------------------------- -------------------------------------- --}}
 
-                    </div>
-			   </div>
+
             <div class="todo">
 					<h3>liste d'écoles</h3>
                     <div class="head">
