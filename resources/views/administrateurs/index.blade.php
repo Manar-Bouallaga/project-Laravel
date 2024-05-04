@@ -45,17 +45,15 @@
 				</a>
 			</li>
 			<li>
-				<a href="{{route("ecoles.index")}}">
-				<a href="#" style="text-decoration: none">
+				<a href="#" >
+				<a href="{{route("ecoles.index")}}" style="text-decoration: none">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">liste d'écoles</span>
 				</a>
 			</li>
 			<li>
-
-				<a href="{{route("reunions.index")}}">
-
-				<a href="#" style="text-decoration: none">
+				<a href="#" >
+				<a href="{{route("reunions.index")}}" style="text-decoration: none">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Réunion</span>
 				</a>
@@ -66,12 +64,6 @@
 				<a href="{{ route('profile.edit') }}" style="text-decoration: none">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">paramètre</span>
-				</a>
-			</li>
-			<li>
-				<a href="#" class="logout" style="text-decoration: none">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
 				</a>
 			</li>
 		</ul>
@@ -133,7 +125,7 @@
 				 <div class="order">
                     <div style="display: flex">
 					<h3>Réunion</h3>
-                    <a href="#" style=" text-decoration: none"><i style="font-size: 13px">voir plus </i><img width="20px" src="right-arrow.png" alt=""></a>
+                    <a href="{{route("reunions.index")}}" style=" text-decoration: none"><i style="font-size: 13px">voir plus </i><img width="20px" src="right-arrow.png" alt=""></a>
                     </div>
                     <div class="head">
   {{-- ---------------------------------------------------- -------------------------------------- --}}
@@ -157,7 +149,10 @@
 
 
             <div class="todo">
+                <div style="display: flex">
 					<h3>liste d'écoles</h3>
+                    <a href="{{route("ecoles.index")}}" style=" text-decoration: none"><i style="font-size: 13px">voir plus </i><img width="20px" src="right-arrow.png" alt=""></a>
+                </div>
                     <div class="head">
                             <ul class="todo-list">
                                 @foreach ($ecoles as $ecole)

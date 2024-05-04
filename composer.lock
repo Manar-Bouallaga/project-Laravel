@@ -5,10 +5,14 @@
         "This file is @generated automatically"
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "1c7ef034d5b95a5656a665ff20c3826b",
 =======
     "content-hash": "e8ff17c85c1c8443ee290bfca8e6289d",
 >>>>>>> e66b492b9132f9192697637ffc75ebc248481d44
+=======
+    "content-hash": "605fc480de982de9f29e163056c68ac4",
+>>>>>>> 8edcd62e3950938c35ac0c52042a1c4be3e76e07
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
