@@ -56,8 +56,8 @@ class ReunionController extends Controller
         $reunion->heure_rendez_vous = $request->heure_rendez_vous;
         $reunion->lieu_rencontre = $request->lieu_rencontre;
         $reunion->save();
-        // $reunion->code_qr_reunion = QrCode::size(200)->generate('reunion_' . $reunion->id );
-        $reunion->code_qr_reunion = QrCode::size(200)->generate('http://127.0.0.1:8000/directeurs', compact('$reunion->id '));
+        $reunion->code_qr_reunion = QrCode::size(200)->generate('http://127.0.0.1:8000/directeurs?reunion_id=' . $reunion->id);
+
         $reunion->save();
         return redirect()->route('reunions.index')->with('success', 'La réunion a été créée avec succès.');
     }

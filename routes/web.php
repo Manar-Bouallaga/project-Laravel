@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('presences', PresenceController::class);
     Route::resource('reunions', ReunionController::class);
     route::get("confirm_presence/{qrCode}");
+
 });
 Route::get('/login', [AdministrateurController::class, 'login'])->name('login');
 Route::get('/dashboard', function () {
