@@ -1,13 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
 
+
+
+
+        window.onload = function() {
+            // recuperer la reunion
+            var reunionId = localStorage.getItem('reunion_id')
+
+            // recuperer le directeur
+            var urlParams = new URLSearchParams(window.location.search);
+            var directeurId = urlParams.get('id');
+            // recuperer la date
+            let dateActuele= new Date();
+            let jour = dateActuele.getDate();
+            let mois = dateActuele.getMonth()+1;
+            let annee = dateActuele.getFullYear();
+            let heures = dateActuele.getHours();
+            let minutes = dateActuele.getMinutes();
+            let date_heure_presence = `${annee}-${mois}-${jour}  ${heures}:${minutes}`;
+
+            if (directeurId) {
+                // Afficher l'ID du directeur dans la console
+                document.getElementById('directeurId').value = directeurId;
+                document.getElementById('date_heure_presence').value = date_heure_presence;
+                document.getElementById('reunionId').value = reunionId;
+            }
+        }
+    </script>
     <style>
-        * { box-sizing: border-box; }
+              * { box-sizing: border-box; }
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
 
 
@@ -25,10 +52,10 @@ body {
 
 .left {
     width: 50%;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  width: 50%;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
@@ -58,6 +85,7 @@ body {
 .header > h2 {
   margin: 0;
   color: #4f46a5;
+  font-size: 42px;
 }
 
 .header > h4 {
@@ -169,40 +197,23 @@ body {
     </style>
 </head>
 <body>
-<h1>
-<div class="container">
-  <div class="left">
-    <div class="header">
-      <h2 class="animation a1">Validé votre</h2>
-      <h2 class="animation a1">présence</h2>
+    <div class="container">
+        <div class="left">
+        <div class="header">
+      <h2 class="animation a1">Merci pour votre </h2>
+      <h2 class="animation a1"> présence.</h2>
       <br>
-      <h4 class="animation a2">Entre votre information</h4>
+      <h4 class="animation a2">Cliquez sur "OK" pour finaliser cette opération !</h4>
     </div>
-    <form class="form"  method='post' action="{{route("directeurs.store")}}">
-    @csrf
-      <input type="text" class="form-field animation a3" placeholder="nom"  name="nom">
-      <input type="text" class="form-field animation a4" placeholder="prenom" name="prenom">
-      <input type="text" class="form-field animation a4" placeholder="telephone" name="telephone">
-      <select class="form-field animation a4" name="ecole_id" >
-        @foreach ($ecoles as $ecole)
-            <option value="{{{$ecole->id}}}">{{{$ecole->nom_ecole}}}</option>
-        @endforeach
-    </select>
-    <input id="subDir" class="animation a6 btn-sub"  type="submit" value="Ok">
-
-</form>
-  </div>
-  <!-- <div class="right"></div> -->
-</div>
-</h1>
-
-<script>
-        document.getElementById("subDir").addEventListener("click",function(){
-            console.log("ID de réunion:");
-            var urlParams = new URLSearchParams(window.location.search);
-            var reunionId = urlParams.get('reunion_id');
-            localStorage.setItem('reunion_id' ,reunionId );
-        })
-    </script>
+            <form class="form" method="post" action="{{ route('presences.store') }}">
+                @csrf
+                <input type="hidden" class="form-field" id="directeurId" name="directeur_id">
+                <input type="hidden" class="form-field animation a4"  name="reunion_id" id='reunionId'>
+                <input type="hidden" class="form-field animation a4"  id="date_heure_presence" name="date_heure_presence">
+                
+                <input type="submit" class="btn-sub" value="OK">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

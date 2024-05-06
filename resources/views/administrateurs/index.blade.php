@@ -45,13 +45,14 @@
 				</a>
 			</li>
 			<li>
-				<a href="{{route('ecoles.index')}}" style="text-decoration: none">
+				<a href='{{route("ecoles.index")}}' style="text-decoration: none">
+
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">liste d'écoles</span>
 				</a>
 			</li>
 			<li>
-				<a href="{{ route('reunions.index')}}" style="text-decoration: none">
+				<a href='{{route("reunions.index")}}' style="text-decoration: none">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Réunion</span>
 				</a>
@@ -128,18 +129,19 @@
                     <div class="head">
   {{-- ---------------------------------------------------- -------------------------------------- --}}
 
-   <ul class="box-infos">
-    @foreach($reunions as $reunion)
-    <li>
-        <img src="data:image/svg+xml;base64,{{ base64_encode($reunion->code_qr_reunion) }}" alt="Code QR de la réunion">
-        <span class="text">
-            <h3>{{$reunion->date_reunion}}</h3>
-            <p>{{$reunion->heure_rendez_vous}}</p>
-            <p>{{$reunion->lieu_rencontre}}</p>
-        </span>
-    </li>
-    @endforeach
-</ul>
+                        <ul class="box-infos">
+                            @foreach($reunions as $reunion)
+                            <li>
+                                <img src="data:image/svg+xml;base64,{{ base64_encode($reunion->code_qr_reunion) }}" alt="Code QR de la réunion">
+                                <span class="text">
+                                    <h3>{{$reunion->date_reunion}}</h3>
+                                    <p>{{$reunion->heure_rendez_vous}}</p>
+                                    <p>{{$reunion->lieu_rencontre}}</p>
+                                </span>
+                            </li>
+                            @endforeach
+                        </ul>
+
                      </div>
 			   </div>
    {{-- ---------------------------------------------------- -------------------------------------- --}}

@@ -13,14 +13,14 @@ class AdministrateurController extends Controller
     // public function login(){
     //     return view("auth.login");
     // }
+    public function login(){
+    }
 
     public function index()
     {
-        $ecoles = Ecole::all()->take(3);;
-        $reunions = Reunion::all()->take(3);;
+        $ecoles = Ecole::all()->take(3);
+        $reunions=Reunion::all()->take(3);
         return view('administrateurs.index',compact('ecoles','reunions'));
-
-
     }
 
     /**

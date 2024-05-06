@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Presence;
 use Illuminate\Http\Request;
 
 class PresenceController extends Controller
@@ -20,6 +21,8 @@ class PresenceController extends Controller
     public function create()
     {
         //
+        $presences = Presence::all();
+        return view("presences.create", compact('presences'));
     }
 
     /**
@@ -28,7 +31,15 @@ class PresenceController extends Controller
     public function store(Request $request)
     {
         //
+        $store = new Presence();
+
+        $store->directeur_id = $request->directeur_id;
+        $store->reunion_id = $request->reunion_id;
+        $store->date_heure_presence = $request->date_heure_presence;
+        $store->save();
+        return redirect()->route("directeurs.create");
     }
+
 
     /**
      * Display the specified resource.

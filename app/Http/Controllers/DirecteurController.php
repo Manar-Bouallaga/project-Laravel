@@ -22,11 +22,25 @@ class DirecteurController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $directeur = Directeur::first(); // Ou toute autre méthode pour récupérer le directeur souhaité
+
+        // Vérifier si le directeur existe
+        if ($directeur) {
+            // sSi le directeur existe, récupérer son ID
+            $id = $directeur->id;
+        } else {
+            // Si aucun directeur n'est trouvé, définir l'ID sur null ou une autre valeur par défaut
+            $id = null; // Ou une autre valeur par défaut selon vos besoins
+        }
+
+        // Récupérer toutes les écoles (comme vous l'avez déjà fait)
         $ecoles = Ecole::all();
-        return view("directeur.create", compact('ecoles'));
+
+        // Passer les données à la vue
+        return view("directeur.create", compact('ecoles', 'id'));
     }
 
     /**
@@ -42,7 +56,10 @@ class DirecteurController extends Controller
         $store->telephone = $request->telephone;
         $store->ecole_id = $request->ecole_id;
         $store->save();
-        return redirect()->route("directeurs.create");
+        $id = $store->id;
+        // $idReunion = $request->query('reunion_id');
+        // compact("id")
+        return redirect()->route("presences.create",compact("id"));
     }
 
     /**

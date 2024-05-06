@@ -36,9 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('administrateurs', AdministrateurController::class);
     Route::resource('directeurs', DirecteurController::class);
     Route::resource('ecoles', EcoleController::class);
-    Route::resource('administrateurs', AdministrateurController::class);
-    Route::resource('directeurs', DirecteurController::class);
-    Route::resource('ecoles', EcoleController::class);
+    Route::get('/ecoles/search', [EcoleController::class, 'search'])->name('ecoles.search');
     Route::resource('presences', PresenceController::class);
     Route::resource('reunions', ReunionController::class);
     route::get("confirm_presence/{qrCode}");
@@ -60,3 +58,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reunion;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 class ReunionController extends Controller
 {
     /**
@@ -16,8 +17,16 @@ class ReunionController extends Controller
         $reunions = Reunion::all();
         return view("reunion.index", compact("reunions"));
 
+    }
+    public function search(Request $request)
+    {
+        $search = $request->input('search'); // Get the search query from the request
 
-     }
+        // Query to filter schools based on the search query
+        $reunions = Reunion::where('date_reunion', 'like', '%' . $search . '%')->get();
+
+        return view("reunion.index", compact("reunions"));
+    }
 
 
     /**
@@ -47,7 +56,8 @@ class ReunionController extends Controller
         $reunion->heure_rendez_vous = $request->heure_rendez_vous;
         $reunion->lieu_rencontre = $request->lieu_rencontre;
         $reunion->save();
-        $reunion->code_qr_reunion = QrCode::size(200)->generate('reunion_' . $reunion->id);
+        $reunion->code_qr_reunion = QrCode::size(200)->generate('http://127.0.0.1:8000/directeurs?reunion_id=' . $reunion->id);
+
         $reunion->save();
         return redirect()->route('reunions.index')->with('success', 'La réunion a été créée avec succès.');
     }
@@ -55,6 +65,8 @@ class ReunionController extends Controller
     public function show(string $id)
     {
         //
+        $reunions = Reunion::find($id);
+        return view("reunion.show", compact('reunions'));
     }
 
     /**
