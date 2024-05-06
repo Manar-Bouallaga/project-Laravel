@@ -45,15 +45,13 @@
 				</a>
 			</li>
 			<li>
-				<a href="#" >
-				<a href="{{route("ecoles.index")}}" style="text-decoration: none">
+				<a href="{{route('ecoles.index')}}" style="text-decoration: none">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">liste d'écoles</span>
 				</a>
 			</li>
 			<li>
-				<a href="#" >
-				<a href="{{route("reunions.index")}}" style="text-decoration: none">
+				<a href="{{ route('reunions.index')}}" style="text-decoration: none">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Réunion</span>
 				</a>

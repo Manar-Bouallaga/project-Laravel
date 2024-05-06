@@ -1,4 +1,4 @@
-    <div style="display: flex">
+<div style="display: flex">
     <img width="60%" style="position: relative;" src="vecteezy_business-planning-strategy-meeting-to-reach-the-target-group_5610692.jpg" alt="">
     <x-guest-layout>
     <!-- Session Status -->

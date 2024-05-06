@@ -5,12 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdministrateurController;
 use App\Http\Controllers\DirecteurController;
 use App\Http\Controllers\EcoleController;
+
 // use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\ReunionController;
 
 
 // use App\Models\Administrateur;
 
+
+use App\Http\Controllers\PresenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,29 +29,22 @@ use App\Http\Controllers\ReunionController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::middleware('auth')->group(function(){
-
-
-// Route::get('/', function () {
+Route::middleware('auth')->group(function () {
+    // Route::get('/', function () {
 //     return view('Home');
 // });
-Route::resource('administrateurs', AdministrateurController::class);
-Route::resource('directeurs', DirecteurController::class);
-Route::resource('ecoles', EcoleController::class);
-Route::get('/ecoles', [EcoleController::class, 'search'])->name('ecoles.index');
-Route::resource('reunions', ReunionController::class);
-route::get("confirm_presence/{qrCode}");
+    Route::resource('administrateurs', AdministrateurController::class);
+    Route::resource('directeurs', DirecteurController::class);
+    Route::resource('ecoles', EcoleController::class);
+    Route::resource('administrateurs', AdministrateurController::class);
+    Route::resource('directeurs', DirecteurController::class);
+    Route::resource('ecoles', EcoleController::class);
+    Route::resource('presences', PresenceController::class);
+    Route::resource('reunions', ReunionController::class);
+    route::get("confirm_presence/{qrCode}");
+
 });
-
-
-Route::resource('reunions', ReunionController::class);
-route::get("confirm_presence/{qrCode}");
-// iben taymia el malakiya
-// Route::get('/form-after-scan', 'ReunionController@showFormAfterScan')->name('form-after-scan')
-;
-// Route::get('/form-after-scan', 'DirecteurController@show')->name('form-after-scan');
-
-Route::get('/login',[AdministrateurController::class,'login'])->name('login');
+Route::get('/login', [AdministrateurController::class, 'login'])->name('login');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -63,9 +59,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-
-
-
-
-
+require __DIR__ . '/auth.php';
