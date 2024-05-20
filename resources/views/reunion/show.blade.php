@@ -91,7 +91,7 @@
                                     <th>{{$directeur->prenom}}</th>
                                     <!--  $directeur->ecole->nom -->
                                     <th>{{$directeur->pivot->date_heure_presence}}</th>
-                                    
+
                                     <th>{{$directeur->telephone}}</th>
                                 </tr>
                             @endforeach
@@ -112,7 +112,7 @@
                         <canvas id="myChart"></canvas>
                     </div>
                     <!-- Button for return -->
-                    <a href="index.html" class="btn btn-primary mt-4"><i class="fas fa-arrow-left mr-2"></i>Retour</a>
+                    <a href="{{route('reunions.index')}}" class="btn btn-primary mt-4"><i class="fas fa-arrow-left mr-2"></i>Retour</a>
                 </div>
             </div>
         </div>
