@@ -18,13 +18,11 @@ class EcoleController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->input('search'); // Get the search query from the request
-
-        // Query to filter schools based on the search query
+        $search = $request->input('search');
         $ecoles = Ecole::where('nom_ecole', 'like', '%'.$search.'%')->get();
-
-        return view("ecole.index", compact("ecoles"));
+        return view("ecole.index", compact("ecoles"))->render();
     }
+
 
 
     /**

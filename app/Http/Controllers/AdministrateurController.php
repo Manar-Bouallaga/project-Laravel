@@ -6,11 +6,13 @@ use App\Models\Administrateur;
 use App\Models\Ecole;
 use App\Models\Reunion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AdministrateurController extends Controller
 {
 
+    // public function login(){
+    //     return view("auth.login");
+    // }
     public function login(){
     }
 
