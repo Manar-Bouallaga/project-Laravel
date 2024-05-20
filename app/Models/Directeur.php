@@ -16,4 +16,9 @@ class Directeur extends Model
         'ecole_id',
         'telephone',
     ];
+
+    public function presences()
+    {
+        return $this->hasMany(Presence::class, 'directeur_id');
+    }
 }

@@ -16,4 +16,12 @@ class Reunion extends Model
         'lieu_rencontre',
         'code_qr_reunion',
     ];
+    public function directeurs()
+    {
+        return $this->belongsToMany(Directeur::class, 'presences', 'reunion_id', 'directeur_id');
+    }
+    public function presences()
+    {
+        return $this->hasMany(Presence::class, 'reunion_id');
+    }
 }

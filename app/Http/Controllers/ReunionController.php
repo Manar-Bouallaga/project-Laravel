@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reunion;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\DB;
 
 class ReunionController extends Controller
 {
@@ -44,10 +45,9 @@ class ReunionController extends Controller
     {
 
         $request->validate([
-            'date_reunion' => 'required',
+            'date_reunion' => 'required|date',
             'heure_rendez_vous' => 'required',
             'lieu_rencontre' => 'required',
-
         ]);
 
 
@@ -63,10 +63,25 @@ class ReunionController extends Controller
     }
 
     public function show(string $id)
-    {
-        //
-        $reunions = Reunion::find($id);
-        return view("reunion.show", compact('reunions'));
+     {
+    //     $reunions = Reunion::findOrFail($id);
+
+    //     $directeursPresents = DB::table('directeurs')
+    //         ->select('directeurs.nom', 'directeurs.prenom', 'ecoles.nom_ecole as nom_ecole', 'directeurs.telephone', 'presences.date_heure_presence')
+    //         ->join('presences', 'directeurs.id', '=', 'presences.directeur_id')
+    //         ->join('ecoles', 'directeurs.ecole_id', '=', 'ecoles.id')
+    //         ->where('presences.reunion_id', $id)
+    //         ->get();
+    $reunions = Reunion::find($id);
+
+    // Récupérer les directeurs présents à la réunion
+    $directeurs = $reunions->directeurs()->withPivot('date_heure_presence')->get();
+    // $directeurs->load('ecole');
+    // dd($directeurs);
+    // Transmettre les directeurs à la vue
+    return view('reunion.show', compact('reunions', 'directeurs' ));
+
+        ;
     }
 
     /**
@@ -85,13 +100,17 @@ class ReunionController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $reunions = Reunion::find($id);
-        $reunions->date_reunion = $request->date_reunion;
-        $reunions->heure_rendez_vous = $request->heure_rendez_vous;
-        $reunions->lieu_rencontre = $request->lieu_rencontre;
+        // $reunions = Reunion::find($id);
+        // $reunions->date_reunion = $request->date_reunion;
+        // $reunions->heure_rendez_vous = $request->heure_rendez_vous;
+        // $reunions->lieu_rencontre = $request->lieu_rencontre;
 
-        $reunions->save();
-        return redirect()->route('reunions.index');
+        // $reunions->save();
+        // return redirect()->route('reunions.index');
+        $reunions = Reunion::findOrFail($id);
+        $directeursPresents = $reunions->presences()->with('directeur')->get();
+
+        return view('reunion.show', compact('reunions', 'directeursPresents'));
     }
 
     /**

@@ -37,13 +37,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('directeurs', DirecteurController::class);
     Route::resource('ecoles', EcoleController::class);
     Route::resource('administrateurs', AdministrateurController::class);
-    Route::resource('directeurs', DirecteurController::class);
     Route::resource('ecoles', EcoleController::class);
-    Route::resource('presences', PresenceController::class);
     Route::resource('reunions', ReunionController::class);
     route::get("confirm_presence/{qrCode}");
 
 });
+Route::resource('presences', PresenceController::class);
+Route::resource('directeurs', DirecteurController::class);
+
 Route::get('/login', [AdministrateurController::class, 'login'])->name('login');
 Route::get('/dashboard', function () {
     return view('dashboard');

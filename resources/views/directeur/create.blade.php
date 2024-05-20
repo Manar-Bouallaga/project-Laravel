@@ -152,6 +152,13 @@ body {
     transform: translateY(0);
   }
 }
+.error{
+    width: 80%;
+    font-size: 13px;
+    color: red;
+    font-weight: 200;
+    margin-left: 7px;
+}
 
 @keyframes left {
   0% {
@@ -173,21 +180,45 @@ body {
 <div class="container">
   <div class="left">
     <div class="header">
-      <h2 class="animation a1">Validé votre</h2>
+      <h2 class="animation a1">Valider votre</h2>
       <h2 class="animation a1">présence</h2>
       <br>
       <h4 class="animation a2">Entre votre information</h4>
     </div>
     <form class="form"  method='post' action="{{route("directeurs.store")}}">
     @csrf
+    <div>
+
+    </div>
+
       <input type="text" class="form-field animation a3" placeholder="nom"  name="nom">
+    @error('nom')
+        <div class="error">
+            {{$message}}
+        </div>
+    @enderror
       <input type="text" class="form-field animation a4" placeholder="prenom" name="prenom">
+      @error('prenom')
+        <div class="error">
+            {{$message}}
+        </div>
+    @enderror
       <input type="text" class="form-field animation a4" placeholder="telephone" name="telephone">
+      @error('telephone')
+        <div class="error">
+            {{$message}}
+        </div>
+    @enderror
       <select class="form-field animation a4" name="ecole_id" >
         @foreach ($ecoles as $ecole)
-            <option value="{{{$ecole->id}}}">{{{$ecole->nom_ecole}}}</option>
+            <option value="{{$ecole->id}}">{{$ecole->nom_ecole}}</option>
         @endforeach
     </select>
+    @error('ecole_id')
+        <div class="error">
+            {{$message}}
+        </div>
+    @enderror
     <input id="subDir" class="animation a6 btn-sub"  type="submit" value="Ok">
 
 </form>

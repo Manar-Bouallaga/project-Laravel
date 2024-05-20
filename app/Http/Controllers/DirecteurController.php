@@ -49,6 +49,18 @@ class DirecteurController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'telephone' => 'required|regex:/[0-9]/',
+            'ecole_id' => 'required',
+        ], [
+            'nom.required' => "le nom est obligatoire",
+            'prenom.required' => "le prenom est obligatoire",
+            'telephone.required' => "le telephone est obligatoire",
+            'telephone.regex' => "type nomber ",
+            'ecole_id.required' => "le ecole est obligatoire",
+        ]);
         $store = new Directeur();
         $store->id = $request->id;
         $store->nom = $request->nom;

@@ -16,13 +16,10 @@
         <br>
         <label >Heure de debut </label>
         <input class="form-control"  type="time" name="heure_rendez_vous" id="heure">
-
         <br>
         <label >Le lieu  </label>
         <input class="form-control"  type="text" name="lieu_rencontre" id="heure">
-
         <br>
-        <!-- <input class="form-control"  type="text" value="codeQr" name="code_qr_reunion"> -->
         <input  class="btn btn-primary btn-block mb-4" type="submit" value="ajouter">
 </form>
 

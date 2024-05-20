@@ -8,11 +8,24 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    </div>
     <form style="width: 80%;border-radius: 9px;border: solid 1px #dfdfdf;margin: auto;padding: 39px;" method='post' action="{{route('ecoles.store')}}" class="my-5 bg-light-subtle">
         @csrf
         <h1>ajouter une école</h1>
         <label > Nom d'école</label>
         <input class="form-control" type="text" name="nom_ecole" >
+
         <br>
         <label >type d'école  </label>
         <select class="form-control"  name="categorie" id="">

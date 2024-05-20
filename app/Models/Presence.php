@@ -16,4 +16,15 @@ class Presence extends Model
         'date_heure_presence',
         'signature',
     ];
+
+    public function reunion()
+    {
+        return $this->belongsTo(Reunion::class, 'reunion_id');
+    }
+
+    // Relation avec le directeur
+    public function directeur()
+{
+    return $this->belongsTo(Directeur::class, 'directeur_id');
+}
 }
